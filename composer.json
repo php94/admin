@@ -1,0 +1,16 @@
+{
+    "name": "php94/admin",
+    "title": "核心后台",
+    "description": "通用后台管理面板框架",
+    "license": "GPL-3.0",
+    "type": "php94",
+    "require": {
+        "php94/framework": "^1.0",
+        "gregwar/captcha": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Php94\\Admin\\": "src/library/"
+        }
+    }
+}
