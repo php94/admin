@@ -22,7 +22,7 @@ CREATE TABLE `prefix_php94_admin_account` (
     KEY `name` (`name`)
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='账户表';
 INSERT INTO `prefix_php94_admin_account` (`id`, `name`, `password`, `disabled`) VALUES
-(1, 'root', '488660319786092bd49604bd5bf3aed3', 0);
+(1, 'root', 'd213aba72dff561526008b43d23b86ce', 0);
 DROP TABLE IF EXISTS `prefix_php94_admin_info`;
 CREATE TABLE `prefix_php94_admin_info` (
     `account_id` int(10) unsigned NOT NULL,
