@@ -60,11 +60,7 @@ str;
         Package::execSql($sql);
     },
     'update' => function (string $oldversion) {
-        $updates = [
-            '1.0.7' => function () {
-                Package::execSql('ALTER TABLE `prefix_php94_admin_role` ADD COLUMN `description` varchar(255) NOT NULL DEFAULT \'\' COMMENT \'角色备注\';');
-            }
-        ];
+        $updates = [];
         foreach ($updates as $version => $fn) {
             if (version_compare($oldversion, $version, '<')) {
                 $fn();
