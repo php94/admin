@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Php94\Admin\Http;
 
-use PHP94\Facade\Framework;
-use PHP94\Help\Response;
+use PHP94\Framework;
+use PHP94\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

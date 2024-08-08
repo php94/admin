@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Php94\Admin\Http\Widget;
 
 use App\Php94\Admin\Http\Common;
-use PHP94\Facade\App;
-use PHP94\Facade\Config;
-use PHP94\Facade\Logger;
-use PHP94\Facade\Template;
+use PHP94\App;
+use PHP94\Config;
+use PHP94\Logger;
+use PHP94\Template;
 use Throwable;
 
 class Diy extends Common

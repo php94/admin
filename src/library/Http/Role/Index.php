@@ -5,8 +5,8 @@ declare (strict_types = 1);
 namespace App\Php94\Admin\Http\Role;
 
 use App\Php94\Admin\Http\Common;
-use PHP94\Facade\Db;
-use PHP94\Facade\Template;
+use PHP94\Db;
+use PHP94\Template;
 
 /**
  * 角色管理

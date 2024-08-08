@@ -2,8 +2,8 @@
 
 use App\Php94\Admin\Http\Common;
 use App\Php94\Admin\Middleware\AuthMiddleware;
-use PHP94\Handler\Handler;
-use PHP94\Help\Request;
+use PHP94\Handler;
+use PHP94\Request;
 
 return [
     Handler::class => function (

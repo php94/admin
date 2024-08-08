@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Php94\Admin\Http\Menu;
 
 use App\Php94\Admin\Http\Common;
-use PHP94\Facade\App;
-use PHP94\Facade\Config;
-use PHP94\Facade\Db;
-use PHP94\Facade\Router;
-use PHP94\Facade\Session;
-use PHP94\Facade\Template;
+use PHP94\App;
+use PHP94\Config;
+use PHP94\Db;
+use PHP94\Router;
+use PHP94\Session;
+use PHP94\Template;
 
 /**
  * 功能地图

@@ -1,6 +1,6 @@
 <?php
 
-use PHP94\Help\Package;
+use PHP94\Package;
 
 return [
     'install' => function () {

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Php94\Admin\Http\Tool;
 
 use App\Php94\Admin\Http\Common;
-use PHP94\Facade\Config;
-use PHP94\Help\Request;
-use PHP94\Help\Response;
+use PHP94\Config;
+use PHP94\Request;
+use PHP94\Response;
 use Psr\Http\Message\UploadedFileInterface;
 
 /**

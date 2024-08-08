@@ -6,8 +6,8 @@ namespace App\Php94\Admin\Http\App;
 
 use App\Php94\Admin\Http\Common;
 use Composer\InstalledVersions;
-use PHP94\Facade\App;
-use PHP94\Facade\Template;
+use PHP94\App;
+use PHP94\Template;
 
 class Index extends Common
 {

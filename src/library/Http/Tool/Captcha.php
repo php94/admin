@@ -6,8 +6,8 @@ namespace App\Php94\Admin\Http\Tool;
 
 use App\Php94\Admin\Http\Common;
 use Gregwar\Captcha\CaptchaBuilder;
-use PHP94\Facade\Factory;
-use PHP94\Facade\Session;
+use PHP94\Factory;
+use PHP94\Session;
 use Psr\Http\Message\ResponseInterface;
 
 /**

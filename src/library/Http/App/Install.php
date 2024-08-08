@@ -6,10 +6,10 @@ namespace App\Php94\Admin\Http\App;
 
 use App\Php94\Admin\Http\Common;
 use Composer\Autoload\ClassLoader;
-use PHP94\Facade\App;
-use PHP94\Facade\Framework;
-use PHP94\Help\Request;
-use PHP94\Help\Response;
+use PHP94\App;
+use PHP94\Framework;
+use PHP94\Request;
+use PHP94\Response;
 use ReflectionClass;
 use Throwable;
 
