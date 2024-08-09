@@ -32,7 +32,7 @@ class AuthMiddleware implements MiddlewareInterface
             if (!Session::has('admin_id')) {
                 return Response::error('请登录', Router::build('/php94/admin/auth/login'));
             }
-            if (!Session::get('admin_id') == 1) {
+            if (Session::get('admin_id') != 1) {
                 if (!$role_ids = Db::get('php94_admin_account_role', 'role_id', [
                     'account_id' => Session::get('admin_id'),
                 ])) {
