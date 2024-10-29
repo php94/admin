@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Php94\Admin\Http\Menu;
 
 use App\Php94\Admin\Http\Common;
+use App\Php94\Admin\Model\Menu;
 use PHP94\App;
-use PHP94\Config;
 use PHP94\Db;
-use PHP94\Router;
 use PHP94\Session;
 use PHP94\Template;
 
@@ -17,8 +16,11 @@ use PHP94\Template;
  */
 class Index extends Common
 {
-    public function get()
-    {
+    public function get(
+        Menu $menuModel
+    ) {
+        $menus = $menuModel->getAuthMenus();
+
         $sticks = [];
         if ($tmp = Db::get('php94_admin_info', 'value', [
             'key' => 'php94_admin_menu',
@@ -28,8 +30,7 @@ class Index extends Common
         }
 
         $groups = [];
-        $menus = [];
-        foreach (App::allActive() as $appname) {
+        foreach (App::all() as $appname) {
             $groups[$appname] = [
                 'appname' => $appname,
                 'title' => $appname,
@@ -45,32 +46,19 @@ class Index extends Common
                     }
                 }
             }
-            $menus = [];
-            foreach (Config::get('admin.menus@' . $appname, []) as $vo) {
-                $vo['url'] = Router::build($this->buildPathFromNode($vo['node'] ?? ''), $vo['query'] ?? []);
-                $vo['stick'] = array_search([
-                    'url' => $vo['url'],
-                    'title' => $vo['title'],
-                ], $sticks) !== false;
-                $menus[] = $vo;
+            $tmpm = [];
+            foreach ($menus as $vo) {
+                if ($vo['appname'] == $appname) {
+                    $tmpm[] = $vo;
+                }
             }
-            $groups[$appname]['menus'] = $menus;
+            $groups[$appname]['menus'] = $tmpm;
         }
 
         return Template::render('menu/index@php94/admin', [
             'groups' => $groups,
             'sticks' => $sticks,
+            'menus' => $menus,
         ]);
-    }
-
-    private function buildPathFromNode(string $node): string
-    {
-        $paths = [];
-        foreach (explode('\\', $node) as $vo) {
-            $paths[] = strtolower(preg_replace('/([A-Z])/', "-$1", lcfirst($vo)));
-        }
-        unset($paths[0]);
-        unset($paths[3]);
-        return '/' . implode('/', $paths);
     }
 }

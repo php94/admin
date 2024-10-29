@@ -38,7 +38,7 @@
                     <details open>
                         <summary>
                             <span>{$vo['title']??'无标题'}</span>
-                            <a href="{echo $router->build('/php94/admin/widget/add', ['file'=>$vo['file']])}" target="diy" class="link-offset-2">添加</a>
+                            <a href="{echo $router->build('/php94/admin/widget/add', ['key'=>$vo['key']])}" target="diy" class="link-offset-2">添加</a>
                         </summary>
                         {echo $vo['content']}
                     </details>

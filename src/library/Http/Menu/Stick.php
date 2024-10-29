@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Php94\Admin\Http\Menu;
 
@@ -16,8 +16,8 @@ use PHP94\Response;
  */
 class Stick extends Common
 {
-    public function get(
-    ) {
+    public function get()
+    {
         $sticks = [];
         if ($tmp = Db::get('php94_admin_info', 'value', [
             'key' => 'php94_admin_menu',
@@ -26,15 +26,11 @@ class Stick extends Common
             $sticks = unserialize($tmp);
         }
 
-        $menu = [
-            'url' => Request::get('url'),
-            'title' => Request::get('title'),
-        ];
-        $key = array_search($menu, $sticks);
-        if ($key !== false) {
-            unset($sticks[$key]);
+        $index = array_search(Request::get('key'), $sticks);
+        if ($index !== false) {
+            unset($sticks[$index]);
         } else {
-            $sticks[] = $menu;
+            $sticks[] = Request::get('key');
         }
 
         if (Db::get('php94_admin_info', '*', [

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Php94\Admin\Http\Widget;
 
@@ -22,7 +22,7 @@ class Add extends Common
         ])) {
             $widgets = unserialize($tmp);
         }
-        $widgets[] = Request::get('file');
+        $widgets[] = Request::get('key');
 
         if (Db::get('php94_admin_info', '*', [
             'account_id' => Session::get('admin_id'),

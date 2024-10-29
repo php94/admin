@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Php94\Admin\Http\Widget;
 
@@ -19,22 +19,22 @@ class Left extends Common
             'account_id' => Session::get('admin_id'),
             'key' => 'php94_admin_widgets',
         ])) {
-            $files = unserialize($tmp);
+            $widgets = unserialize($tmp);
         } else {
-            $files = [];
+            $widgets = [];
         }
 
         $index = Request::get('index');
-        $tmp = $files[$index - 1];
-        $files[$index - 1] = $files[$index];
-        $files[$index] = $tmp;
+        $tmp = $widgets[$index - 1];
+        $widgets[$index - 1] = $widgets[$index];
+        $widgets[$index] = $tmp;
 
         if (Db::get('php94_admin_info', '*', [
             'account_id' => Session::get('admin_id'),
             'key' => 'php94_admin_widgets',
         ])) {
             Db::update('php94_admin_info', [
-                'value' => serialize($files),
+                'value' => serialize($widgets),
             ], [
                 'account_id' => Session::get('admin_id'),
                 'key' => 'php94_admin_widgets',
@@ -43,7 +43,7 @@ class Left extends Common
             Db::insert('php94_admin_info', [
                 'account_id' => Session::get('admin_id'),
                 'key' => 'php94_admin_widgets',
-                'value' => serialize($files),
+                'value' => serialize($widgets),
             ]);
         }
 

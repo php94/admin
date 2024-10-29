@@ -29,10 +29,12 @@ class UnInstall extends Common
         }
 
         try {
-            $fn = $this->getFn(App::getDir($appname) . '/src/config/package.php');
-            if ($fn) {
-                Framework::execute($fn);
-            }
+            Framework::execute(function () use ($appname) {
+                $file = App::getDir($appname) . '/src/package/uninstall.php';
+                if (file_exists($file)) {
+                    require $file;
+                }
+            });
             $root = dirname((new ReflectionClass(ClassLoader::class))->getFileName(), 3);
             $installed_lock = $root . '/config/' . $appname . '/installed.lock';
             unlink($installed_lock);
@@ -40,16 +42,5 @@ class UnInstall extends Common
         } catch (Throwable $th) {
             return Response::success('卸载错误：' . $th->getMessage());
         }
-    }
-
-    private function getFn($file): ?callable
-    {
-        if (file_exists($file)) {
-            $x = include $file;
-            if (isset($x['unInstall'])) {
-                return $x['unInstall'];
-            }
-        }
-        return null;
     }
 }

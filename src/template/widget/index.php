@@ -8,19 +8,19 @@
     {/if}
 </div>
 <div style="display: flex;flex-direction: row;gap: 10px;flex-wrap: wrap;margin-top: 20px;">
-    {foreach $widgets as $key => $vo}
+    {foreach $widgets as $index => $vo}
     <div style="width:300px;">
         <details open>
             <summary>
                 <span>{$vo['title']?:'无标题'}</span>
                 {if $request->has('get.diy')}
-                {if $key}
-                <a href="{echo $router->build('/php94/admin/widget/left', ['index'=>$key])}">左移</a>
+                {if $index}
+                <a href="{echo $router->build('/php94/admin/widget/left', ['index'=>$index])}">左移</a>
                 {/if}
-                {if count($widgets)-$key-1}
-                <a href="{echo $router->build('/php94/admin/widget/right', ['index'=>$key])}">右移</a>
+                {if count($widgets)-$index-1}
+                <a href="{echo $router->build('/php94/admin/widget/right', ['index'=>$index])}">右移</a>
                 {/if}
-                <a href="{echo $router->build('/php94/admin/widget/remove', ['index'=>$key])}">移除</a>
+                <a href="{echo $router->build('/php94/admin/widget/remove', ['index'=>$index])}">移除</a>
                 {/if}
             </summary>
             {echo $vo['content']}

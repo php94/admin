@@ -86,7 +86,9 @@
         <div class="menu">
             <a class="active" href="{echo $router->build('/php94/admin/widget/index')}" target="main">主页</a>
             {foreach $sticks as $vo}
-            <a href="{echo $vo['url']}" target="main">{$vo.title}</a>
+            {if is_scalar($vo) && isset($menus[$vo])}
+            <a href="{echo $menus[$vo]['url']}" target="main">{$menus[$vo]['title']}</a>
+            {/if}
             {/foreach}
             <a href="{echo $router->build('/php94/admin/menu/index')}" target="main">更多</a>
         </div>

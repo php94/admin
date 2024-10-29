@@ -26,10 +26,12 @@ class Install extends Common
         }
 
         try {
-            $fn = $this->getFn(App::getDir($appname) . '/src/config/package.php');
-            if ($fn) {
-                Framework::execute($fn);
-            }
+            Framework::execute(function () use ($appname) {
+                $file = App::getDir($appname) . '/src/package/install.php';
+                if (file_exists($file)) {
+                    require $file;
+                }
+            });
             $root = dirname((new ReflectionClass(ClassLoader::class))->getFileName(), 3);
             $installed_lock = $root . '/config/' . $appname . '/installed.lock';
             if (!is_dir(dirname($installed_lock))) {
@@ -41,16 +43,5 @@ class Install extends Common
         } catch (Throwable $th) {
             return Response::success('安装错误：' . $th->getMessage());
         }
-    }
-
-    private function getFn($file): ?callable
-    {
-        if (file_exists($file)) {
-            $x = include $file;
-            if (isset($x['install'])) {
-                return $x['install'];
-            }
-        }
-        return null;
     }
 }

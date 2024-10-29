@@ -2,9 +2,7 @@
 
 use PHP94\Package;
 
-return [
-    'install' => function () {
-        $sql = <<<'str'
+$sql = <<<'str'
 DROP TABLE IF EXISTS `prefix_php94_admin_role`;
 CREATE TABLE `prefix_php94_admin_role` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -47,24 +45,5 @@ CREATE TABLE `prefix_php94_admin_role_node` (
     PRIMARY KEY (`id`) USING BTREE
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色权限表';
 str;
-        Package::execSql($sql);
-    },
-    'unInstall' => function () {
-        $sql = <<<'str'
-DROP TABLE IF EXISTS `prefix_php94_admin_role`;
-DROP TABLE IF EXISTS `prefix_php94_admin_account`;
-DROP TABLE IF EXISTS `prefix_php94_admin_account_role`;
-DROP TABLE IF EXISTS `prefix_php94_admin_info`;
-DROP TABLE IF EXISTS `prefix_php94_admin_role_node`;
-str;
-        Package::execSql($sql);
-    },
-    'update' => function (string $oldversion) {
-        $updates = [];
-        foreach ($updates as $version => $fn) {
-            if (version_compare($oldversion, $version, '<')) {
-                $fn();
-            }
-        }
-    },
-];
+
+Package::execSql($sql);

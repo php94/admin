@@ -36,7 +36,7 @@ class Access extends Common
                     'role_id' => $role['id'],
                 ]);
                 $nodes = [];
-                foreach (App::allActive() as $appname) {
+                foreach (App::all() as $appname) {
                     $nodes[$appname] = [];
                     foreach ($this->getNodesByApp($appname) as $no) {
                         $no['methods'] = Db::select('php94_admin_role_node', 'method', [
