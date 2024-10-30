@@ -59,7 +59,7 @@ class Menu
         $role_ids = Db::select('php94_admin_account_role', 'role_id', [
             'account_id' => Session::get('admin_id'),
         ]);
-        return Db::select('php94_admin_role_node', ['node'], [
+        return Db::select('php94_admin_role_node', 'node', [
             'role_id' => $role_ids ?: ['_'],
         ]);
     }

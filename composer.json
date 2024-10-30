@@ -3,7 +3,7 @@
     "title": "核心后台",
     "description": "通用后台管理面板框架",
     "license": "GPL-3.0",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "type": "php94",
     "require": {
         "php94/framework": "^1.0",
